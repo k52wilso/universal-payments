@@ -1,0 +1,29 @@
+.sidebar {
+    display:grid;
+    position: relative;
+    z-index: 10;
+    grid-template-rows: 10% 60%;
+    .logo {
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #7498D9;
+        font-family: Impact, Charcoal, sans-serif;
+        font-weight: 600;
+        font-size:30px;
+        color:#72DDDD;
+        text-shadow: 1px 1px 1px #008181;
+    }
+    .navigation {
+        display:grid;
+        grid-template-columns: auto;
+        justify-content: center;
+        padding: 50px 0;
+        .icon-sm {
+            color:#9e9c9c;
+            &.active {
+                color:white;
+            }
+        }
+    }
+}

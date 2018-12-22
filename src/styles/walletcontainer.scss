@@ -1,0 +1,237 @@
+
+@keyframes openwallet {
+    from {transform: translate(-100px); opacity: 0;}
+    to {transform: translate(0); opacity: 1;}
+}
+
+@keyframes fadein {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes closewallet {
+    from {transform: translate(0); opacity: 1;}
+    to {transform: translate(-100px); opacity: 0;}
+}
+
+.wallet-container::-webkit-scrollbar {
+    width: 12px;
+}
+ 
+.wallet-container::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 10px;
+}
+ 
+.wallet-container::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+
+.wallet-container {
+
+    &.close-wallet {
+        animation: closewallet 0.8s forwards;
+    }
+
+    &.open-wallet {
+        display: block;
+    }
+    display: none;
+    background-color:#154294;
+    overflow-y: scroll;
+    height:100%;
+    position: relative;
+    z-index:5;
+    transform: translate(-100px);
+    animation: openwallet 0.5s forwards;
+    .close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        color: #fff;
+        cursor: pointer;
+        transition: 0.3s;
+        &:hover {
+            transform: rotate(45deg);
+            color: rgb(175, 172, 172);
+        }
+    }
+    .wallet {
+        display: grid;
+        grid-template-rows: auto auto auto;
+        justify-content: center;
+        animation: fadein 0.8s forwards;
+        .name {
+            font-weight: 600;
+            font-size:14px;
+            color: white;
+        }
+
+        .wallet-total {
+            font-weight: 600;
+            font-size:24px;
+            color: white;
+            margin: 10px 0;
+        }
+
+        .image-div {
+            height: 70px;
+            margin: 30px 0 40px 0;
+            display:flex;
+            justify-content: center;
+            .image-wrap {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 85px;
+                height: 85px;
+                border-radius: 50%;
+                background-image: linear-gradient(to right, white 70%, white 50%);
+                background-position: top;
+                background-size: 25px 0px;
+                background-repeat: repeat-x;
+                border-color: white;
+                border-width: 1px;
+                border-style: dashed;
+            }
+            img {
+                width: 70px;
+                border-radius: 50%;
+            }
+        }
+        .card-holder {
+            display:grid;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .card {
+            display:grid;
+            grid-template-rows: auto auto auto;
+            width: 210px;
+            min-height:100px;
+            border-radius: 5px;
+            margin: 10px 0;
+            .chip {
+                width: 20px;
+                height: 20px;
+                margin:20px 0 0 20px;
+            }
+            .card-number {
+                text-align: center;
+                color: #cdcdcd;
+                font-size: 12px;
+                margin: 10px 0 0 0;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            &.visa {
+                /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#1e5799+0,207cca+16,2989d8+50,1e5799+88 */
+                background: #1e5799; /* Old browsers */
+                background: -moz-linear-gradient(45deg, #1e5799 0%, #207cca 16%, #2989d8 50%, #1e5799 88%); /* FF3.6-15 */
+                background: -webkit-linear-gradient(45deg, #1e5799 0%,#207cca 16%,#2989d8 50%,#1e5799 88%); /* Chrome10-25,Safari5.1-6 */
+                background: linear-gradient(45deg, #1e5799 0%,#207cca 16%,#2989d8 50%,#1e5799 88%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#1e5799',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+            }
+            &.mastercard {
+                /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#9b1f21+1,fc2828+16,c4256f+50,681419+89 */
+                background: #9b1f21; /* Old browsers */
+                background: -moz-linear-gradient(45deg, #9b1f21 1%, #fc2828 16%, #c4256f 50%, #681419 89%); /* FF3.6-15 */
+                background: -webkit-linear-gradient(45deg, #9b1f21 1%,#fc2828 16%,#c4256f 50%,#681419 89%); /* Chrome10-25,Safari5.1-6 */
+                background: linear-gradient(45deg, #9b1f21 1%,#fc2828 16%,#c4256f 50%,#681419 89%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9b1f21', endColorstr='#681419',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+            }
+
+            .card-footer {
+                margin: 5px 0 0 20px;
+                p {
+                    text-align: left;
+                    color: #cdcdcd;
+                    margin:0;
+                    font-size:8px;
+                    font-family: Arial, Helvetica, sans-serif;
+                }
+
+                .card-details {
+                    display: block;
+                    float: left;
+                    margin-top: 10px;
+                }
+
+                .card-image {
+                    float:right;
+                    margin-right: 20px;
+
+                    &.visa {
+                        width: 40px;
+                        height: 40px;
+                    }
+                    &.mastercard {
+                        width: 40px;
+                        height: 24px;
+                        margin: 10px 20px 10px 0;
+                    }
+                }
+            }
+        }
+    }
+
+    .carousel {
+        display: flex;
+        justify-content: space-evenly;
+        margin: 10px 0;
+
+        .carousel-divider {
+            display: inline-block;
+            width: 2px;
+            height: 100%;
+            background-color: #3367ac;
+        }
+    }
+
+    .carousel-item {
+        display:flex;
+        align-items: center;
+        grid-template-columns: auto auto;
+        padding-left: 10px;
+        .icon-wrap {
+            width: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 25px;
+            border-radius: 50%;
+
+            &.good {
+                border: 1px solid rgb(115, 243, 136);
+                i {       
+                    color: rgb(115, 243, 136);
+                }
+            }
+
+            &.bad {
+                border: 1px solid rgb(243, 115, 115);
+                i {       
+                    color: rgb(243, 115, 115);
+                }
+            }
+        }
+        .details {
+            margin: 0 10px;
+            text-align: left;
+            p {
+                margin: 0;
+                color: white;
+            }
+
+            .topic {
+                font-weight: 300;
+                font-size: 12px;
+            }
+
+            .value {
+                font-size: 14px;
+            }
+        }
+    }
+}
