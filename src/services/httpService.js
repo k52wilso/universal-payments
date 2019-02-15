@@ -41,6 +41,49 @@ const dashboard = {
     }
 }
 
+let id = 0;
+function createData(name, amount, date, cardID) {
+  id += 1;
+  return { id, name, amount, date, cardID};
+}
+
+const rows = [
+  createData("Walmart", 198.99, Date.now(), "010"),
+  createData("Costco", 300, Date.now(), "011"),
+  createData("Moxies", 29.00, Date.now(), "010")
+];
+
+const transcations = {
+    data: rows
+};
+
+const getReceiptForTranscation = (id) => {
+    for (let i = 0; i < transcations.data.length; i++) {
+        if (id === transcations.data[i].id) return transcations.data[i];
+    }
+    
+    return {};
+}
+
+const alerts = [{
+    id: "010",
+    status: "approaching",
+    name: "Daily Limit",
+    currentValue: 120,
+    bounds: {
+        min: 0,
+        max: 1000
+    }
+}, {
+    id: "011",
+    status: "exceeded",
+    name: "Monthly Limit",
+    currentValue: 1350,
+    bounds: {
+        min: 0,
+        max: 1300
+    }
+}]
 
 class HttpService {
     static getWallet() {
@@ -52,6 +95,29 @@ class HttpService {
     static getDashboard(){
         return new Promise((resolve) => {
             resolve(dashboard);
+        });
+    }
+
+    static getTranscations(){
+        return new Promise((resolve) => {
+            resolve(transcations);
+        });
+    }
+
+    static getReceipt(id) {
+        const receipt = getReceiptForTranscation(id);
+        return new Promise((resolve) => {
+            if (receipt.name) {
+                resolve(receipt);
+            } else {
+                console.log("There was an error getting receipt data: ", receipt);
+            }
+        });
+    }
+
+    static getAlerts() {
+        return new Promise((resolve) => {
+            resolve(alerts);
         });
     }
 }

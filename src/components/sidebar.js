@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter, Link } from "react-router-dom";
 import Icon from "./icon/icon";
 import "../styles/sidebar.scss";
 class SideBar extends Component {
@@ -22,10 +23,17 @@ class SideBar extends Component {
     }
 
     componentDidMount() {
-        const { items } = this.props
-        this.setState({
-            activeItem: items[0]
-        });
+        const { items, location } = this.props
+        let activeItem;
+        if (location.pathname === "/") {
+            activeItem = items[0]; // return dashboard as default 
+        } else {
+            for (let i = 0; i < items.length; i++) {
+                if (items[i].path && items[i].path === location.pathname) activeItem = items[i];
+            }
+        }
+        
+        this.setState({activeItem});
     }
 
     render() {
@@ -39,12 +47,22 @@ class SideBar extends Component {
                 </div>
                 <div className="navigation">
                 {items.map((item) => {
-                    item.active = (activeItem.id === item.id) ? true : false;
+                    item.active = (activeItem && activeItem.id === item.id) ? true : false;
                     if (item.active && item.walletOpen === false) item.active = false;
-                    item.setItem = this.setItem;
-                    return (
-                        <Icon key={item.id} icon={item} />
-                    );
+
+                    if (item.path) {
+                        return (
+                            <Link key={item.id} to={item.path} onClick={this.setItem.bind(this, item)}>
+                                <Icon key={item.id} icon={item} />
+                            </Link>
+                        );
+                    } else {
+                        return (
+                            <button key={item.id} onClick={this.setItem.bind(this, item)}>
+                                <Icon key={item.id} icon={item} />
+                            </button>
+                        );
+                    }
                 })}
                 </div>
             </div>
@@ -52,4 +70,6 @@ class SideBar extends Component {
     }
 }
 
-export default SideBar;
+const SideBarWithRouter = withRouter(SideBar);
+
+export default SideBarWithRouter;

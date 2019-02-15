@@ -1,21 +1,20 @@
 import { ACTIONTYPES } from "../utils/actionTypes";
 let handlers  = {};
 const initialState = {
-    wallet: {
-        walletOpen: false
-    }
+    walletOpen: false
 };
 
 handlers[ACTIONTYPES.GET_WALLET] = (state, payload) => {
     return {
-        ...state,
-        wallet: {walletOpen: true, ...payload}
+        ...state, 
+        ...payload
     };
 };
 handlers[ACTIONTYPES.CLOSE_WALLET] = (state) => {
     return {
         ...state,
-        wallet: {...state.wallet,walletOpen: false}
+        ...state.wallet,
+        walletOpen: false
     };
 };
 

@@ -22,7 +22,7 @@ handlers[ACTIONTYPES.NOTIFICATION_STOP_WAITING] = (state, payload) => {
     return {
         ...state,
         waitingActionTypes: newWaitingActionTypes,
-        isWaiting: false
+        isWaiting: newWaitingActionTypes.length > 0 ? true : false
     }
 };
 

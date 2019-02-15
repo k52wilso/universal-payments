@@ -1,0 +1,22 @@
+.transcations {
+    display: grid;
+    padding: 0 20px;
+    .table-head {
+        background-color: #222f3e;
+        th {
+            color:white;
+        }
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    .view {
+        cursor: pointer;
+        color: rgb(0, 153, 255);
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}

@@ -3,6 +3,7 @@ import NotificationContainer from "./NotificationContainer";
 import { getWallet, closeWallet } from "../actions/WalletActions";
 import "../styles/walletcontainer.scss";
 import { connect } from 'react-redux'
+import { ACTIONTYPES } from "../utils/actionTypes";
 import Wallet from "../components/wallet";
 const mapStateToProps = (state, props) => {
     return {
@@ -15,7 +16,7 @@ const mapDispatchToProps = dispatch => ({
     closeWallet: () => closeWallet()(dispatch)
 });
 
-class Container extends Component {
+class WalletConnect extends Component {
     state = {
         walletOpen : false
     }
@@ -38,10 +39,10 @@ class Container extends Component {
 
     render() {
         const { notification, wallet} = this.props;
-        const { walletOpen } = wallet.wallet;
+        const { walletOpen } = wallet;
         const openClass = walletOpen ? "open-wallet" : "close-wallet";
         return (<div className={`wallet-container ${openClass}`} >
-            {notification.isWaiting ? (<NotificationContainer />) : <Wallet wallet={wallet.wallet}/>}
+            {notification.isWaiting && notification.waitingActionTypes.includes(ACTIONTYPES.GET_WALLET) ? (<NotificationContainer />) : <Wallet wallet={wallet}/>}
             <i className="close fas fa-times" title="CLOSE WALLET" onClick={this._closeWallet}></i>
         </div>);
     }
@@ -49,6 +50,6 @@ class Container extends Component {
 
 const WalletContainer = connect(
     mapStateToProps, mapDispatchToProps
-)(Container);
+)(WalletConnect);
 
 export default WalletContainer;

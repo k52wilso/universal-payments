@@ -4,6 +4,7 @@ import "../styles/dashboardcontainer.scss";
 import Dashboard from "../components/dashboard";
 import NotificationContainer from "./NotificationContainer";
 import { ACTIONTYPES } from "../utils/actionTypes";
+import { getDashboard } from "../actions/dashboardActions";
 
 const mapStateToProps = (state, props) => {
     return {
@@ -13,13 +14,30 @@ const mapStateToProps = (state, props) => {
     }
 };
 
+const mapDispatchToProps = dispatch => ({
+    getDashboard: () => getDashboard()(dispatch)
+});
 
+const isEmpty = (obj) => {
+    for(var key in obj) {
+        if(obj.hasOwnProperty(key))
+            return false;
+    }
+    return true;
+}
 
-class Container extends Component {
+class DashboardConnect extends Component {
+
+    componentWillMount() {
+        const { dashboard, getDashboard } = this.props;
+        if (dashboard.charts.length === 0 && isEmpty(dashboard.savingsSummary)) {
+            getDashboard();
+        } 
+    }
 
     getClass() {
         const { dashboard, notification, wallet } = this.props;
-        if (wallet.wallet.walletOpen && dashboard.charts.length && dashboard.savingsSummary) return "dashboard-container walletOpen";
+        if (wallet.walletOpen && dashboard.charts.length && dashboard.savingsSummary) return "dashboard-container walletOpen";
         if (notification.isWaiting) return "dashboard-container isWaiting";
         return "dashboard-container";
     }
@@ -36,7 +54,7 @@ class Container extends Component {
 }
 
 const DashboardContainer = connect(
-    mapStateToProps, null
-)(Container);
+    mapStateToProps, mapDispatchToProps
+)(DashboardConnect);
 
 export default DashboardContainer;

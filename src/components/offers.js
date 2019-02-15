@@ -3,17 +3,17 @@ import Offer from "./offer";
 
 const offers = [{
     header: "50%",
-    title: "Savings for Home",
+    title: "Savings from Costco",
     link: "Read More...",
     linkCallback: () => console.log("Clicking offer..."),
-    imageURL: "/assets/images/home.png",
+    imageURL: "/assets/images/costco.png",
     background: "#0984e3"
 }, {
     header: "23%",
-    title: "Savings for New Car",
+    title: "Savings from Walmart",
     link: "Read More...",
     linkCallback: () => console.log("Clicking offer..."),
-    imageURL: "/assets/images/car.png",
+    imageURL: "/assets/images/walmart.png",
     background: "#00b894"
 }];
 class Offers extends Component {
