@@ -36,10 +36,6 @@ class Dashboard extends Component {
                 </div>
                 <Offers />
                 <div className="charts-recent">
-                {charts[0] && charts[0].data ? <div className="chart">
-                        <h4>Money History</h4>
-                        
-                    </div> : null}
                     <div className="recent">
                         <h4>Recent Transcations</h4>
                         <Table>

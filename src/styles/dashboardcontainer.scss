@@ -36,6 +36,7 @@
                 img {
                     &.flex-item {
                         height: 75px;
+                        width: 100px;
                     }
                 }
                 .flex-item {
@@ -160,7 +161,6 @@
             }
 
             .flex-item {
-                height: 75px;
             }
 
             .details {
@@ -180,6 +180,7 @@
 
             img {
                 height: 100%;
+                width: 150px;
             }
         }
     }
