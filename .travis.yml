@@ -4,6 +4,10 @@ node_js:
 cache:
   directories:
     - node_modules
+before_install:
+- npm update
+install:
+- npm install
 jobs:  
   include:
     - stage: build                # naming the Build state
@@ -11,7 +15,9 @@ jobs:
       script: npm run build
     - stage: test
       name: "Unit Tests"
-      script: npm test
+      script: 
+        - npm test
+        - npm run coveralls
 stages:
   - build
   - test
