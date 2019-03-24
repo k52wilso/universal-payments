@@ -2,6 +2,13 @@
   "name": "universal-payments",
   "version": "0.1.0",
   "private": true,
+  "jest": {
+    "collectCoverageFrom": [
+      "src/{actions,components,containers,reducers,services,utils}/*.{js,jsx,ts,tsx}",
+      "!**/node_modules/**",
+      "!**/vendor/**"
+    ]
+  },
   "dependencies": {
     "@material-ui/core": "^3.7.0",
     "enzyme": "^3.8.0",
