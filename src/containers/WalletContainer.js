@@ -16,7 +16,7 @@ const mapDispatchToProps = dispatch => ({
     closeWallet: () => closeWallet()(dispatch)
 });
 
-class WalletConnect extends Component {
+export class WalletConnect extends Component {
     state = {
         walletOpen : false
     }

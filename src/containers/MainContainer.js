@@ -28,7 +28,7 @@ const mapDispatchToProps = dispatch => ({
     changeNavigation: (location) => changeNavigation(location)(dispatch)
 });
 
-class MainConnect extends Component {
+export class MainConnect extends Component {
 
     componentWillMount() {
         const { location, changeNavigation, dashboard, transcations, history } = this.props;

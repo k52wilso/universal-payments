@@ -57,7 +57,6 @@ describe("Dashboard Container test suite",() => {
             }}
         });
         wrapper.update();
-        console.log(wrapper.props());
         // const charts = wrapper.props().dashboard.charts;
         // const savingsSummary = wrapper.props().dashboard.savingsSummary;
         // expect(charts.length).toBeGreaterThan(0);
