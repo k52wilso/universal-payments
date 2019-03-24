@@ -8,7 +8,7 @@ const mapStateToProps = (state, props) => {
         actionTypes: state.notification.waitingActionTypes
     }
 }
-class NotificationLoader extends Component {
+export class NotificationLoader extends Component {
     render() {
         const { isWaiting } = this.props;
         return (

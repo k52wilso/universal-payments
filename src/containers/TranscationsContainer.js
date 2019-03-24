@@ -17,7 +17,7 @@ const mapDispatchToProps = dispatch => ({
     getTranscations: () => getTranscations()(dispatch)
 });
 
-class TranscationsConnect extends Component {
+export class TranscationsConnect extends Component {
 
     componentWillMount() {
         const {transcations, getTranscations} = this.props;

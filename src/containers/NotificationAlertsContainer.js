@@ -34,7 +34,7 @@ const dailyLimits = [
     {name: 'Tuesday', spending: 3490, pv: 4300, amt: 2100},
 ];
 
-class NotificationAlertsConnect extends Component {
+export class NotificationAlertsConnect extends Component {
     componentWillMount() {
         const { getAlerts } = this.props;
         getAlerts();

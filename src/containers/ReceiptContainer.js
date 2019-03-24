@@ -54,7 +54,7 @@ const getEndingOfCardNumber = (number) => {
     return `**${number.charAt(number.length - 1)}${number.charAt(number.length - 2)}`
 }
 
-class ReceiptConnect extends Component {
+export class ReceiptConnect extends Component {
 
     componentWillMount() {
         const {getReceipt, getWallet, location} = this.props;
