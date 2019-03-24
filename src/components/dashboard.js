@@ -21,6 +21,34 @@ const rows = [
   createData("Moxies", 29.00, Date.now())
 ];
 
+const carouselItems = [{
+    id: "010",
+    topic: "Income", 
+    value: "CAN 32,500.00",
+    trend: "bad"
+},{
+    id: "011",
+    topic: "Spending", 
+    value: "CAN 10,120.00",
+    trend: "bad"
+}];
+
+const offers = [{
+    header: "50%",
+    title: "Savings from Costco",
+    link: "Read More...",
+    linkCallback: () => console.log("Clicking offer..."),
+    imageURL: "/assets/images/costco.png",
+    background: "#0984e3"
+}, {
+    header: "23%",
+    title: "Savings from Walmart",
+    link: "Read More...",
+    linkCallback: () => console.log("Clicking offer..."),
+    imageURL: "/assets/images/walmart.png",
+    background: "#00b894"
+}];
+
 class Dashboard extends Component {
     render() {
         const { dashboard } = this.props;
@@ -32,9 +60,9 @@ class Dashboard extends Component {
                     <h4>Savings Total</h4>
                     <p className="savings-total">{savingsSummary.total}<span><i className="fas fa-caret-up"></i>{savingsSummary.trend}</span></p>
                     </div>
-                    <Carousel />
+                    <Carousel items={carouselItems} />
                 </div>
-                <Offers />
+                <Offers offers={offers} />
                 <div className="charts-recent">
                     <div className="recent">
                         <h4>Recent Transcations</h4>

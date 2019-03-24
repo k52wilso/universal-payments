@@ -26,7 +26,7 @@ const isEmpty = (obj) => {
     return true;
 }
 
-class DashboardConnect extends Component {
+export class DashboardConnect extends Component {
 
     componentWillMount() {
         const { dashboard, getDashboard } = this.props;

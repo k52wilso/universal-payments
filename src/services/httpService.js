@@ -1,4 +1,3 @@
-
 const wallet = {
     user: {
         name: "Kyle Wilson-McCormack",
@@ -107,10 +106,10 @@ class HttpService {
     static getReceipt(id) {
         const receipt = getReceiptForTranscation(id);
         return new Promise((resolve) => {
-            if (receipt.name) {
+            if (id) {
                 resolve(receipt);
             } else {
-                console.log("There was an error getting receipt data: ", receipt);
+                console.log('Error getting receipt');
             }
         });
     }

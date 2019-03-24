@@ -65,7 +65,7 @@ class ReceiptConnect extends Component {
     }
 
     render() {
-        const { location, receipt, notification, wallet } = this.props;
+        const {receipt, notification, wallet } = this.props;
         const { receiptDetails } = receipt;
         const receiptClass = "receipt-container";
         const getCardUsed = getCardUsedForTranscation(wallet, receiptDetails.cardID);
