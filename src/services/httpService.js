@@ -1,5 +1,3 @@
-import { reject } from "q";
-
 const wallet = {
     user: {
         name: "Kyle Wilson-McCormack",
@@ -107,7 +105,7 @@ class HttpService {
 
     static getReceipt(id) {
         const receipt = getReceiptForTranscation(id);
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
             if (id) {
                 resolve(receipt);
             } else {
